@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Peserta</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<style>
+  body {
+    padding-top: 30px; /* kira-kira tinggi navbar Bootstrap */
+  } 
+
+  .navbar{
+    background-color: #1b4d5f;
+  }
+
+  footer{
+    background-color: #1b4d5f;
+  }
+</style>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-dark fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand"><i class="bi bi-journal-text"></i> Formulir</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+      <div class="offcanvas-header">
+<h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"> <i class="bi bi-journal-text"></i> Formulir</h5>        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link" href="formulirpendaftaran.html">Formulir Pendaftaran</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="tabelPeserta.html">
+             Tabel Peserta
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!--Header-->
+<div class="container my-5 text-center">
+  <img src="data:image/jpeg;base64,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" alt="Foto Profil" class="rounded-circle shadow mb-3">
+  <h2>Nayla Amelia Erista</h2>
+  <p class="text-muted">Peserta Pendaftaran Jurusan teknik informatika</p>
+</div>
+
+<!--Data diri-->
+<div class="container  mb-5">
+  <div class="row g-4">
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white"><i class="bi bi-person-fill"></i> Data Pribadi</div>
+        <div class="card-body">
+          <p><b>Jenis Kelamin :</b> Perempuan</p><hr>
+          <p><b>Agama :</b> Islam</p><hr>
+          <p><b>Tempat Lahir :</b> Bekasi</p><hr>
+          <p><b>Tanggal Lahir :</b> 18/05/2007</p><hr>
+          <p><b>Alamat :</b> Jl. Bintara XI</p><hr>
+        </div>
+      </div>
+    </div>
+
+    <!--Pendidikan-->
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-header bg-success text-white"><i class="bi bi-mortarboard-fill"> Pendidikan</i></div>
+        <div class="card-body">
+          <p><b>SD:</b> SD Bintara XI (20/06/2013 - 10/05/2019)</p><hr>
+          <p><b>SMP:</b> SMPN 22 Kota Bekasi (20/06/2019 - 01/04/2022)</p><hr>
+          <p><b>SMA:</b> SMKN 1 Kota Bekasi (15/06/2022 - 17/06/2025)</p><hr>
+        </div>
+      </div>
+    </div>
+
+    <!--Pelatihan-->
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-header bg-warning"><i class="bi bi-laptop"></i> Pelatihan</div>
+        <div class="card-body">
+          <p><b>Minat:</b> HTML, CSS, JavaScript</p>
+          <p><b>Kompetensi:</b> HTML, CSS, PHP, Laravel</p>
+        </div>
+      </div>
+    </div>
+
+    <!--Jurusan-->
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-header bg-danger text-white"><i class="bi bi-diagram-3-fill"></i> Jurusan</div>
+        <div class="card-body">
+          <p><b>Pilihan Jurusan:</b> Teknik Informatika</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--media social-->
+<div class="container text-center mb-5">
+  <h5>Medsos</h5>
+  <a href="#" class="btn btn-outline-primary btn-sm m-1"><i class="bi bi-facebook"></i> Facebook</a>
+  <a href="#" class="btn btn-outline-danger btn-sm m-1"><i class="bi bi-instagram"></i> Instagram</a>
+  <a href="#" class="btn btn-outline-info btn-sm m-1"><i class="bi bi-twitter-x"></i> Twitter</a>
+</div>
+
+<!--Footer-->
+<footer class="text-white text-center py-3">
+  <p class="mb-0">&copy; 2025 Profil Peserta</p>
+</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
